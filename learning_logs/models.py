@@ -14,3 +14,20 @@ class Topic(models.Model):
     def __str__(self):
         """Text type data."""
         return self.text
+
+
+class Entry(models.Model):
+    """Information about learn."""
+
+    topic = models.ForeignKey(Topic)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """Model's name when plural."""
+
+        verbose_name_plural = 'entires'
+
+    def __str__(self):
+        """Return text format."""
+        return self.text[:50] + "..."
